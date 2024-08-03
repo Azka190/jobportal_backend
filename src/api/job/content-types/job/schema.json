@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "job"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jobtitle": {
+      "type": "string",
+      "required": true
+    },
+    "jobtype": {
+      "type": "enumeration",
+      "enum": [
+        "Permanent",
+        "Contract"
+      ]
+    },
+    "education": {
+      "type": "enumeration",
+      "enum": [
+        "Master",
+        "Bachelor",
+        "Intermediate"
+      ],
+      "default": "Master",
+      "required": true
+    },
+    "Industry": {
+      "type": "enumeration",
+      "enum": [
+        "Business",
+        "Banking",
+        "Education",
+        "Telecommunication",
+        "others"
+      ]
+    },
+    "Salary": {
+      "type": "string"
+    }
+  }
+}
