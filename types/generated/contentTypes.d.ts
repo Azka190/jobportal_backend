@@ -362,71 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiEmployeeEmployee extends Schema.CollectionType {
-  collectionName: 'employees';
-  info: {
-    singularName: 'employee';
-    pluralName: 'employees';
-    displayName: 'employee';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    address: Attribute.String;
-    email: Attribute.Email;
-    companyname: Attribute.Text;
-    profilephoto: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::employee.employee',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::employee.employee',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiJobJob extends Schema.CollectionType {
-  collectionName: 'jobs';
-  info: {
-    singularName: 'job';
-    pluralName: 'jobs';
-    displayName: 'job';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    jobtitle: Attribute.String & Attribute.Required;
-    jobtype: Attribute.Enumeration<['Permanent', 'Contract']>;
-    education: Attribute.Enumeration<['Master', 'Bachelor', 'Intermediate']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'Master'>;
-    Industry: Attribute.Enumeration<
-      ['Business', 'Banking', 'Education', 'Telecommunication', 'others']
-    >;
-    Salary: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -853,6 +788,71 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiEmployeeEmployee extends Schema.CollectionType {
+  collectionName: 'employees';
+  info: {
+    singularName: 'employee';
+    pluralName: 'employees';
+    displayName: 'employee';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    address: Attribute.String;
+    email: Attribute.Email;
+    companyname: Attribute.Text;
+    profilephoto: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::employee.employee',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::employee.employee',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiJobJob extends Schema.CollectionType {
+  collectionName: 'jobs';
+  info: {
+    singularName: 'job';
+    pluralName: 'jobs';
+    displayName: 'job';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    jobtitle: Attribute.String & Attribute.Required;
+    jobtype: Attribute.Enumeration<['Permanent', 'Contract']>;
+    education: Attribute.Enumeration<['Master', 'Bachelor', 'Intermediate']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Master'>;
+    Industry: Attribute.Enumeration<
+      ['Business', 'Banking', 'Education', 'Telecommunication', 'others']
+    >;
+    Salary: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -863,8 +863,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::employee.employee': ApiEmployeeEmployee;
-      'api::job.job': ApiJobJob;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -873,6 +871,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::employee.employee': ApiEmployeeEmployee;
+      'api::job.job': ApiJobJob;
     }
   }
 }

@@ -9,6 +9,7 @@ export default function Home() {
     <h1 className="font-extrabold text-red-400">
       Azka
     </h1>
+    
    </div>
   );
 }
