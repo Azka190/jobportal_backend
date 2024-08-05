@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-export default function JobEntry() {
+export default function JobEntry( ) {
   const [message, setMessage] = useState(null);
 
   const register = async (event) => {
@@ -60,8 +60,8 @@ export default function JobEntry() {
                 <option value="Intermediate">Intermediate</option>
             </select>
 
-            <label htmlFor="industry" className="block p-2 font-semibold">Industry</label>
-            <select id="industry" name="industry" className="block rounded bg-[#E4ECEE] w-full p-2 mb-4" required>
+            <label htmlFor="Industry" className="block p-2 font-semibold">Industry</label>
+            <select id="Industry" name="Industry" className="block rounded bg-[#E4ECEE] w-full p-2 mb-4" required>
                 <option value="Business">Business</option>
                 <option value="Banking">Banking</option>
                 <option value="Education">Education</option>
@@ -69,8 +69,8 @@ export default function JobEntry() {
                 <option value="Others">Others</option>
             </select>
 
-            <label htmlFor="salary" className="block p-2 font-semibold">Salary (if any)</label>
-            <input type="text" id="salary" name="salary" className="block rounded bg-[#E4ECEE] w-full p-2 mb-4" />
+            <label htmlFor="Salary" className="block p-2 font-semibold">Salary (if any)</label>
+            <input type="text" id="Salary" name="Salary" className="block rounded bg-[#E4ECEE] w-full p-2 mb-4" />
 
             <button type="submit" className="w-full bg-[#629da3] text-white font-semibold py-2 rounded hover:bg-[#507a7d] transition duration-200">Submit</button>
 
@@ -83,12 +83,34 @@ export default function JobEntry() {
             <h1 className="font-bold font-mono text-2xl">All Jobs</h1>
         </div>
         <div>
-            <table>
+       
+        <table className="w-full bg-[#E4ECEE] border border-gray-300 rounded-lg items-center">
+            <thead>
+                <tr className="bg-[#629da3] text-white">
+                    <th className="p-4">Job Title</th>
+                    <th className="p-4">Job Type</th>
+                    <th className="p-4">Education</th>
+                    <th className="p-4">Industry</th>
+                    <th className="p-4">Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr className='items-center '>
+                    <td className="p-4">S</td>
+                    <td className="p-4">Permanent</td>
+                    <td className="p-4">Bachelor</td>
+                    <td className="p-4">IT</td>
+                    <td className="p-4">$60,000</td>
+                </tr>
                 
-            </table>
+            </tbody>
+        </table>
+         
         </div>
     </div>
 </div>
+
 
   );
 }
