@@ -4,7 +4,7 @@ import React from 'react'
 function Navbar() {
     
   return (
-    <div className='m-5 mx-[80px] flex justify-between '>
+    <div className='m-5 mx-[80px] flex justify-between font-mono'>
         <div>
             <div className='flex text-4xl font-extrabold'>
                 <h1 className=''> <span className='text-black'>Job </span>Portal</h1>
@@ -19,7 +19,6 @@ function Navbar() {
         <div className='p-4 flex gap-3'>
            <a href="/login/page"> <button className='border-2 rounded px-5 py-1 hover:bg-black hover:border-black ease-in-out duration-300  '>Login</button></a>
             <a href="/registration/page"><button className='border-2 rounded px-5 py-1 hover:bg-black hover:border-black ease-in-out duration-300  '>Registration</button></a>
-            
         </div>
     </div>
   )
