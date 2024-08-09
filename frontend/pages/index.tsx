@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Landing from "@/components/Landing";
 import Body from "@/components/Body";
 import TrandingJob from "@/components/TrandingJob";
+import Work from "@/components/Work";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +15,7 @@ export default function Home() {
    <Landing />
    <Body />
    <TrandingJob />
+   <Work />
    </div>
   );
 }
