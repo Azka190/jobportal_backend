@@ -1,15 +1,19 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation'; // Import the useRouter hook
+
 
 export default function Registration() {
   const [message, setMessage] = useState(null);
+  const router = useRouter(); // Initialize the router
+
 
   const register = async (event) => {
     event.preventDefault();
     setMessage(null);
     
     const formData = new FormData(event.target);
-    
+    console.log([...formData.entries()])
     const reqOptions = {
       method: 'POST',
       body: formData
@@ -25,6 +29,7 @@ export default function Registration() {
 
     if (res.jwt && res.user) {
       setMessage('Successful registration.');
+      router.push('/login/page'); // Redirect to the login page
     }
   };
 
@@ -63,8 +68,8 @@ export default function Registration() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="profilePicture" className="block p-2 font-semibold">Profile Picture</label>
-            <input type="file" id="profilePicture" name="profilePicture" className="block rounded bg-[#E4ECEE] w-full p-2" />
+            <label htmlFor="profileimg" className="block p-2 font-semibold">Profile Picture</label>
+            <input type="file" id="profileimg" name="profileimg" className="block rounded bg-[#E4ECEE] w-full p-2" />
           </div>
 
           <button type="submit" className="w-full bg-[#629da3] text-white font-semibold py-2 rounded hover:bg-[#507a7d] transition duration-200">Submit</button>

@@ -44,7 +44,7 @@ export default function JobEntry(props ) {
   );
 }
 export async function getServerSideProps(context) {
-    let headers = {Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzIyNjYyNDQ5LCJleHAiOjE3MjUyNTQ0NDl9.T-SmwfsTwyuy9dg_8GL_aIyvxaN9G5vsXFndvhfjhTA"}
+    let headers = {Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcyMjkyNzkzMCwiZXhwIjoxNzI1NTE5OTMwfQ.DNDKhrWsKtw4zF7sGXuFczWv-B3ZM6qyTxB-9nXIu2E"}
     let a = await fetch("http://localhost:1337/api/jobs", {headers : headers})
     let jobs = await a.json()
     return{

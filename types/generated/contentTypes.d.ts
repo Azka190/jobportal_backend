@@ -837,7 +837,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     address: Attribute.Text & Attribute.Required;
     companyname: Attribute.String & Attribute.Required;
-    profileimg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    profileimg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
