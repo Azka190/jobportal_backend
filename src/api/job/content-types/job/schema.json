@@ -4,7 +4,8 @@
   "info": {
     "singularName": "job",
     "pluralName": "jobs",
-    "displayName": "job"
+    "displayName": "job",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -39,11 +40,24 @@
         "Banking",
         "Education",
         "Telecommunication",
+        "IT",
         "others"
       ]
     },
     "Salary": {
       "type": "string"
+    },
+    "startdate": {
+      "type": "date"
+    },
+    "enddate": {
+      "type": "date"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "jobs"
     }
   }
 }

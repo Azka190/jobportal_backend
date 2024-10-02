@@ -67,22 +67,34 @@
     },
     "address": {
       "type": "text",
-      "required": true
+      "required": false
     },
     "companyname": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "profileimg": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "type": "string",
+      "required": false
+    },
+    "edu": {
+      "type": "string"
+    },
+    "skill": {
+      "type": "string"
+    },
+    "exp": {
+      "type": "string"
+    },
+    "isCompany": {
+      "type": "boolean",
+      "default": false
+    },
+    "jobs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::job.job",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * employee service
+ * application service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::employee.employee');
+module.exports = createCoreService('api::application.application');

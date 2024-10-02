@@ -362,34 +362,41 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiEmployeeEmployee extends Schema.CollectionType {
-  collectionName: 'employees';
+export interface ApiApplicationApplication extends Schema.CollectionType {
+  collectionName: 'applications';
   info: {
-    singularName: 'employee';
-    pluralName: 'employees';
-    displayName: 'employee';
+    singularName: 'application';
+    pluralName: 'applications';
+    displayName: 'Application';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
-    address: Attribute.String;
-    email: Attribute.Email;
-    companyname: Attribute.Text;
-    profilephoto: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
+    users_permissions_users: Attribute.Relation<
+      'api::application.application',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    status: Attribute.Enumeration<['pending', 'reject', 'accepted']>;
+    applicationDate: Attribute.DateTime;
+    jobs: Attribute.Relation<
+      'api::application.application',
+      'oneToMany',
+      'api::job.job'
+    >;
+    jobId: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::employee.employee',
+      'api::application.application',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::employee.employee',
+      'api::application.application',
       'oneToOne',
       'admin::user'
     > &
@@ -403,6 +410,7 @@ export interface ApiJobJob extends Schema.CollectionType {
     singularName: 'job';
     pluralName: 'jobs';
     displayName: 'job';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -414,9 +422,16 @@ export interface ApiJobJob extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<'Master'>;
     Industry: Attribute.Enumeration<
-      ['Business', 'Banking', 'Education', 'Telecommunication', 'others']
+      ['Business', 'Banking', 'Education', 'Telecommunication', 'IT', 'others']
     >;
     Salary: Attribute.String;
+    startdate: Attribute.Date;
+    enddate: Attribute.Date;
+    users_permissions_user: Attribute.Relation<
+      'api::job.job',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -835,10 +850,18 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    address: Attribute.Text & Attribute.Required;
-    companyname: Attribute.String & Attribute.Required;
-    profileimg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
+    address: Attribute.Text;
+    companyname: Attribute.String;
+    profileimg: Attribute.String;
+    edu: Attribute.String;
+    skill: Attribute.String;
+    exp: Attribute.String;
+    isCompany: Attribute.Boolean & Attribute.DefaultTo<false>;
+    jobs: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::job.job'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -866,7 +889,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::employee.employee': ApiEmployeeEmployee;
+      'api::application.application': ApiApplicationApplication;
       'api::job.job': ApiJobJob;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
